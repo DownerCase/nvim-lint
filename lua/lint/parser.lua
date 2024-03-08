@@ -70,6 +70,8 @@ function M.from_pattern(pattern, groups, severity_map, defaults, opts)
       local path
       if vim.startswith(captures.file, '/') then
         path = captures.file
+      elseif vim.loop.os_uname().version:match('Windows') and captures.file:match("^%a:") then
+        path = captures.file
       else
         path = vim.fn.simplify(linter_cwd .. '/' .. captures.file)
       end
