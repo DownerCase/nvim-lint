@@ -1,5 +1,5 @@
 -- path/to/file:line: message [code]
-local pattern = '([^:]+):(%d+): (.+) %[(.+)%]'
+local pattern = '([^%s]+):(%d+): (.+) %[(.+)%]'
 local groups = { 'file', 'lnum', 'message', 'code' }
 local is_windows = vim.loop.os_uname().version:match('Windows')
 
